@@ -10,10 +10,10 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
 public class ParserTest {
-
-    @Test
-    public void testDetermineCommand() {
-        assertTrue(true);
-    }
+//
+//    @Test
+//    public void testDetermineCommand() {
+//        assertTrue(true);
+//    }
 
 }

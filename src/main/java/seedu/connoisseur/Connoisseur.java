@@ -13,6 +13,7 @@ public class Connoisseur {
      * Main entry-point for the java.connoisseur.Connoisseur application.
      */
     public static void main(String[] args) {
+        assert false : "dummy assertion set to fail";
         new Connoisseur();
     }
 

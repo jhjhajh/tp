@@ -9,8 +9,9 @@ import org.junit.jupiter.api.Test;
 
 class CommandListTest {
 
-    @Test
-    public void testPrintHelp() {
-        assertTrue(true);
-    }
+//    @Test
+//    public void testPrintHelp() {
+//        assertTrue(true);
+//    }
+
 }
