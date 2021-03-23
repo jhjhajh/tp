@@ -1,5 +1,6 @@
 package seedu.connoisseur.commandlist;
 
+import seedu.connoisseur.exceptions.DuplicateException;
 import seedu.connoisseur.review.Review;
 import seedu.connoisseur.storage.Storage;
 import seedu.connoisseur.ui.Ui;
@@ -137,10 +138,18 @@ public class CommandList {
             ui.println(QUICK_PROMPT);
             switch (ui.readCommand().toLowerCase()) {
             case "y":
-                addQuickReview();
+                try {
+                    addQuickReview();
+                } catch (DuplicateException de) {
+                    System.out.println("Please try again with a unique title instead!");
+                }
                 break;
             case "n":
-                addLongReview();
+                try {
+                    addLongReview();
+                } catch (DuplicateException de) {
+                    System.out.println("Please try again with a unique title instead!");
+                }
                 break;
             default:
                 ui.println(INVALID_COMMAND);
@@ -148,10 +157,18 @@ public class CommandList {
         } else {
             switch (input) {
             case "quick":
-                addQuickReview();
+                try {
+                    addQuickReview();
+                } catch (DuplicateException de) {
+                    System.out.println("Please try again with a unique title instead!");
+                }
                 break;
             case "long":
-                addLongReview();
+                try {
+                    addLongReview();
+                } catch (DuplicateException de) {
+                    System.out.println("Please try again with a unique title instead!");
+                }
                 break;
             default:
                 ui.println(INVALID_COMMAND);
@@ -162,10 +179,15 @@ public class CommandList {
     /**
      * Add a quick review.
      */
-    public void addQuickReview() {
+    public void addQuickReview() throws DuplicateException {
+        boolean isDuplicate;
         String description = "No description entered. ";
         ui.println(TITLE_PROMPT);
         String title = ui.readCommand();
+        isDuplicate = checkAndPrintDuplicate(title);
+        if (isDuplicate) {
+            throw new DuplicateException();
+        }
         ui.println(CATEGORY_PROMPT);
         String category = ui.readCommand();
         ui.println(RATING_PROMPT);
@@ -187,9 +209,14 @@ public class CommandList {
     /**
      * Add a long review.
      */
-    public void addLongReview() {
+    public void addLongReview() throws DuplicateException {
+        boolean isDuplicate;
         ui.println(TITLE_PROMPT);
         String title = ui.readCommand();
+        isDuplicate = checkAndPrintDuplicate(title);
+        if (isDuplicate) {
+            throw new DuplicateException();
+        }
         ui.println(CATEGORY_PROMPT);
         String category = ui.readCommand();
         ui.println(RATING_PROMPT);
@@ -279,29 +306,53 @@ public class CommandList {
      * @param title title of the review to be viewed
      */
     public void viewReview(String title) {
-        ArrayList<Integer> titleMatch = new ArrayList<Integer>();
         if (title == null) {
             ui.println(MISSING_VIEW_TITLE);
             return;
         }
-
+        assert title != null : "title should not be empty";
+        int reviewIndex = -1;
         for (int i = 0; i < reviewList.size(); i++) {
             if (reviewList.get(i).getTitle().compareTo(title) == 0) {
-                titleMatch.add(i);
+                reviewIndex = i;
+                break;
             }
         }
-        if (titleMatch.isEmpty()) {
+        if (reviewIndex == -1) {
             ui.println(INVALID_VIEW_TITLE);
         } else {
-            assert titleMatch.size() != 0 : "Should have at least 1 found title";
-            ui.println("Found " + titleMatch.size() + " matching title(s)");
-            for (int i = 0; i < titleMatch.size(); i++) {
-                Review currentReview = reviewList.get(titleMatch.get(i));
+            ui.println("Found a matching title: ");
+            for (int i = 0; i < reviewList.size(); i++) {
+                Review currentReview = reviewList.get(reviewIndex);
                 ui.printView(currentReview);
-                if (!((i + 1) == titleMatch.size())) {
-                    ui.print("\n");
-                }
             }
+        }
+    }
+
+    public boolean checkAndPrintDuplicate(String title) {
+        int reviewIndex = -1;
+        for (int i = 0; i < reviewList.size(); i++) {
+            if ((reviewList.get(i).getTitle().toLowerCase()).compareTo(title.toLowerCase()) == 0) {
+                reviewIndex = i;
+            }
+        }
+        if (reviewIndex != -1) {
+            System.out.println("There is a review in your list with the same title: ");
+            Review currentReview = reviewList.get(reviewIndex);
+            ui.print((reviewList.indexOf(currentReview) + 1) + ". ");
+            if (reviewList.indexOf(currentReview) < 9) {
+                ui.print(" ");
+            }
+            ui.print(currentReview.getTitle());
+            ui.printWhiteSpace(currentReview.getTitle().length());
+            ui.print(currentReview.getCategory());
+            ui.printWhiteSpace(currentReview.getCategory().length());
+            ui.print(currentReview.starRating());
+            ui.printWhiteSpace(currentReview.starRating().length());
+            ui.println(currentReview.getDateTime());
+            return true;
+        } else {
+            return false;
         }
     }
 }
