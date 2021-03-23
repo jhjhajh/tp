@@ -25,37 +25,37 @@ import java.util.ArrayList;
 
 public class CommandListTest {
 
-    private final PrintStream originalOut = System.out;
-    private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     public ArrayList<Review> reviewList;
     private Sorter sorter;
     private Ui ui;
     private Storage storage;
 
-    public void CommandListTest (Ui ui, Storage storage) {
+    public void CommandListTest(Ui ui, Storage storage) {
         this.ui = ui;
         this.storage = storage;
         reviewList = new ArrayList<Review>();
         sorter = new Sorter(SortMethod.DATE_LATEST);
     }
 
+    private PrintStream sysOut;
+    private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+
     @BeforeEach
     public void setUpStreams() {
+        sysOut = System.out;
         System.setOut(new PrintStream(outContent));
     }
 
     @AfterEach
     public void restoreStreams() {
-        System.setOut(originalOut);
+        System.setOut(sysOut);
     }
 
     @Test
-    public void listReview_noReviewsExist() {
-
-        setUpStreams();
-        System.out.print("You have no reviews, type 'new' to start!");
-        assertEquals("You have no reviews, type 'new' to start!", outContent.toString());
-        restoreStreams();
+    public void testExit() {
+        CommandList commandList = new CommandList(new ArrayList<String>(), new Ui(), new Storage(new Ui()));
+        commandList.exit();
+        assertEquals("Thanks for using Connoisseur, see you again!\n", outContent.toString());
     }
 
     @Test
