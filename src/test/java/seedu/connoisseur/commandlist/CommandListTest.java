@@ -30,6 +30,8 @@ public class CommandListTest {
     private Ui ui;
     private Storage storage;
 
+//    CommandList commandList = new CommandList(new ArrayList<String>(), new Ui(), new Storage(new Ui()));
+
     public void CommandListTest(Ui ui, Storage storage) {
         this.ui = ui;
         this.storage = storage;
@@ -52,14 +54,21 @@ public class CommandListTest {
     }
 
     @Test
-    public void testExit() {
-        CommandList commandList = new CommandList(new ArrayList<String>(), new Ui(), new Storage(new Ui()));
-        commandList.exit();
+    public void testExitCommand() {
+        CommandList commandList_testExitCommand = new CommandList(new ArrayList<String>(), new Ui(), new Storage(new Ui()));
+        commandList_testExitCommand.exit();
         assertEquals("Thanks for using Connoisseur, see you again!\n", outContent.toString());
     }
 
+//    @Test
+//    public void testInvalidCommand() {
+//        CommandList commandList_testInvalidCommand = new CommandList(new ArrayList<String>(), new Ui(), new Storage(new Ui()));
+//        commandList_testInvalidCommand.invalidCommand();
+//        assertEquals("Invalid command.\n", outContent.toString());
+//    }
+
     @Test
-    void checkAndPrintDuplicate() {
+    void testcheckAndPrintDuplicate() {
         CommandList commandList = new CommandList(new ArrayList<String>(), new Ui(), new Storage(new Ui()));
         commandList.reviewList = new ArrayList<Review>();
         assertFalse(commandList.checkAndPrintDuplicate("Avengers"));
