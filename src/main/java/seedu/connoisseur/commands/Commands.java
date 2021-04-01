@@ -63,7 +63,7 @@ public class Commands {
      * @param arguments is the type of help determined by user input.
      */
     public void printHelp(String arguments) {
-        if (arguments == null) {
+        if (arguments == null || arguments.trim().equals("")) {
             ui.printGeneralHelpMessage();
         } else if (arguments.equals("sort")) {
             ui.printSortHelpMessage();

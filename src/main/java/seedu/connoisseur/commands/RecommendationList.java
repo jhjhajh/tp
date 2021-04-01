@@ -168,6 +168,8 @@ public class RecommendationList {
             ui.println(title + ADD_SUCCESS);
         } catch (NumberFormatException e) {
             ui.printInvalidRatingMessage();
+        } catch (ArrayIndexOutOfBoundsException e) {
+            ui.printInvalidRatingMessage();
         }
     }
 
