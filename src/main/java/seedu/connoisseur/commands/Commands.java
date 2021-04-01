@@ -47,11 +47,17 @@ public class Commands {
         recommendationList = new RecommendationList(ui, reviewList);
     }
 
+    /**
+     * Goes into review mode. 
+     */
     public void reviewMode() {
         isReviewMode = true;
         ui.println("You are now in review mode");
     }
 
+    /**
+     * Goes into recommendation mode. 
+     */
     public void recommendationMode() {
         isReviewMode = false;
         ui.println("You are now in recommendation mode");
@@ -83,7 +89,7 @@ public class Commands {
             ui.printRecommendationModeHelpMessage();
         } else if (arguments.equals("done")) {
             ui.printRecoDoneHelpMessage();
-        } else if (arguments.equals("exit")) {
+        } else if (arguments.equals("exit") || arguments.equals("bye")) {
             ui.printExitHelpMessage();
         } else {
             ui.printInvalidHelpMessage();

@@ -3,8 +3,8 @@ package seedu.connoisseur.recommendation;
 public class Recommendation {
     protected String title;
     protected String category;
-    protected double priceLow;
-    protected double priceHigh;
+    protected int priceLow;
+    protected int priceHigh;
     protected String recommendedBy;
     protected String location;
 
@@ -18,17 +18,13 @@ public class Recommendation {
      * @param inputBy        description of the recommended person
      */
     public Recommendation(String inputTitle, String inputCategory,
-                          double inputPriceLow, double inputPriceHigh, String inputBy, String location) {
+                          int inputPriceLow, int inputPriceHigh, String inputBy, String location) {
         this.title = inputTitle;
         this.category = inputCategory;
         this.priceLow = inputPriceLow;
         this.priceHigh = inputPriceHigh;
         this.recommendedBy = inputBy;
         this.location = location;
-    }
-
-    public void setRecommendedBy(String recommendedBy) {
-        this.recommendedBy = recommendedBy;
     }
 
     /**
@@ -88,18 +84,18 @@ public class Recommendation {
     /**
      * Gets the lower bound price of the recommendation.
      *
-     * @return lower bound price of the recommendation as an double
+     * @return lower bound price of the recommendation as an integer
      */
-    public double getPriceLow() {
+    public int getPriceLow() {
         return priceLow;
     }
 
     /**
      * Gets the higher bound price of the recommendation.
      *
-     * @return higher bound price of the recommendation as an double
+     * @return higher bound price of the recommendation as an integer
      */
-    public double getPriceHigh() {
+    public int getPriceHigh() {
         return priceHigh;
     }
 
@@ -108,7 +104,7 @@ public class Recommendation {
      *
      * @param newPriceLow new low price of recommendation
      */
-    public void setPriceLow(double newPriceLow) {
+    public void setPriceLow(int newPriceLow) {
         this.priceLow = newPriceLow;
     }
 
@@ -117,7 +113,7 @@ public class Recommendation {
      *
      * @param newPriceHigh new high price of recommendation
      */
-    public void setPriceHigh(double newPriceHigh) {
+    public void setPriceHigh(int newPriceHigh) {
         this.priceHigh = newPriceHigh;
     }
 
@@ -131,11 +127,11 @@ public class Recommendation {
     }
 
     /**
-     * Sets the description that recommended the area.
+     * Sets the description that recommended the experience.
      *
-     * @param newBy new description to be set
+     * @param newBy new recommended by to be set
      */
-    public void setDescription(String newBy) {
+    public void setRecommendedBy(String newBy) {
         this.recommendedBy = newBy;
     }
 

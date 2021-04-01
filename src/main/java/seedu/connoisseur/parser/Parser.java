@@ -1,8 +1,6 @@
 package seedu.connoisseur.parser;
 
 import seedu.connoisseur.commands.Commands;
-import seedu.connoisseur.exceptions.DuplicateException;
-import seedu.connoisseur.ui.Ui;
 
 /**
  * Handles Connoisseur's commands.
@@ -22,8 +20,7 @@ public class Parser {
      *
      * @return true if exit command, false otherwise
      */
-    public boolean determineCommand(String input) throws DuplicateException {
-        Ui ui = new Ui();
+    public boolean determineCommand(String input) {
         String command = input.split(" ", 2)[0].toLowerCase().trim();
         String arguments;
         try {

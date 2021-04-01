@@ -24,50 +24,54 @@ public class Messages {
 
     // Help
     public static final String HELP_MESSAGE = "Connoisseur is an application to keep track of all your reviews and"
-            + " recommendations!\nThere are two modes, which are review mode and recommendations mode.\n"
+            + " recommendations!\n"
+            + "There are two modes, which are review mode and recommendations mode.\n"
             + "This application is in review mode by default.\n\n"
-            + "Commands:\nhelp\tdisplays commands recognised by connoisseur\n"
-            + "new\t\tadds a new review or recommendation\nadd\t\tadds a new review or recommendation"
-            + "\nsort\tsets your preferred sorting method for your reviews"
-            + "\nlist\tlists your stored reviews or recommendations\nedit\tedits an existing review or recommendation"
-            + " in your list\n"
-            + "delete\tdeletes a review or recommendation\nexit\texits connoisseur\n"
-            + "review\tswitch over to review mode\nreco\tswitch over to recommendation mode"
-            + "done\tmark a recommendation as done and add a review for it\n"
+            + "Commands:\n"
+            + "help\t\tdisplays help on commands recognised by connoisseur\n"
+            + "review\t\tswitch over to review mode\n"
+            + "reco\t\tswitch over to recommendation mode\n"
+            + "new/add\t\tadds a new review or recommendation\n"
+            + "sort\t\tsets your preferred sorting method for your reviews\n"
+            + "list\t\tlists your stored reviews or recommendations\n"
+            + "edit\t\tedits an existing review or recommendation in your list\n"
+            + "done\t\tmark a recommendation as done and add a review for it\n"
+            + "delete\t\tdeletes a review or recommendation\n"
+            + "exit/bye\texits connoisseur\n"
             + "\nType <help> followed by <command> to learn more about how each command can be used.";
     public static final String SORT_HELP_MESSAGE = "Sort will set your preferred sorting method for your reviews.\n"
-            + "This command is not available in the recommendation mode."
-            + "Currently recognised methods are:\nstars\nearliest\nlatest\ntitle\n"
+            + "This command is not available in the recommendation mode.\n\n"
+            + "Currently recognised methods are:\n\ttitle\n\tcategory\n\trating\n\tearliest\n\tlatest\n"
             + "\nCommand syntax: sort <method>";
     public static final String LIST_HELP_MESSAGE = "List will allow you to list all your reviews or recommendations.\n"
-            + "You would list the reviews if you are in review mode and recommendations if you are in recommendations"
-            + " mode.\n\nCommand syntax: list";
+            + "You will list the reviews/recommendations depending on the mode you are in.\n\n"
+            + "Command syntax: list";
     public static final String EDIT_HELP_MESSAGE = "Edit will allow you to edit an existing review or recommendation"
             + " in your list.\n\n"
-            + "Command syntax: edit <title of review or recommendation you would like to edit>";
-    public static final String EXIT_HELP_MESSAGE = "Exit will allow you to exit the application.\n\n"
-            + "Command syntax: bye\n\t\t\t\texit";
-    public static final String NEW_HELP_MESSAGE = "New or Add will allow you to add a review or recommendation, "
+            + "Command syntax: edit <title of review or recommendation to be edited>";
+    public static final String EXIT_HELP_MESSAGE = "Exit/bye will allow you to exit the application.\n\n"
+            + "Command syntax: bye/exit";
+    public static final String NEW_HELP_MESSAGE = "New and Add are interchangeable. "
+            + "They allow you to add a new review or recommendation,\n"
             + "depending on whether you are in review mode or recommendation mode.\n"
-            + "Review Mode:"
-            + "\nDetails to include in the review:\n\tTitle of Review\n\tQuick Review: y/n\n\tCategory of Experience"
-            + "\n\tRating\n\tIf it is not a quick review, you can also enter a description of the experience."
-            + "\n\nCommand syntax for review: new\n\t\t\t\t\t\t   add"
-            + "\nAlternatively, you can also type:\n\tFor quick review: new quick"
-            + "\n\tFor full review: new long"
-            + "\n\nRecommendation Mode:"
-            + "\nDetails to include in the recommendation:\n\tTitle of recommendation\n\tCategory of experience"
-            + "\n\tPrice range of recommendation\n\tHow did you know about this recommendation\n\n"
-            + "Command syntax for recommendation: new\n\t\t\t\t\t\t\t\t   add";
+            + "Follow the prompts on screen to add the review/recommendation\n\n"
+            + "Command syntax:\n"
+            + "Review Mode:\n"
+            + "\tnew/add\n"
+            + "\tnew/add quick\tfor a quick review\n"
+            + "\tnew/add full\tfor a full review\n\n"
+            + "Recommendation Mode:\n"
+            + "\tnew/add";
     public static final String DELETE_HELP_MESSAGE = "Delete will allow you to remove an entry you input previously\n\n"
-            + "Command syntax in review mode: delete <title of review>\n"
-            + "Command syntax in recommendation mode: delete <title of recommendation>";
+            + "Command syntax: delete <title of review/recommendation>";
     public static final String VIEW_HELP_MESSAGE = "View will allow you to view the details of a review entry you"
             + " made.\nYou can view the title, ratings, date and the full description of your experience.\n\n"
             + "Command Syntax: view <title of review>";
     public static final String RECODONE_HELP_MESSAGE = "Done will allow you to mark a recommendation as done and switch"
-            + " it over as a review.\nAdditional details to include:\n\tRating of experience\n\tDescription"
-            + "of experience (optional)\n\nCommand syntax: done <title of recommendation>";
+            + " it over as a review.\n"
+            + "This can only be done in recommendation mode.\n"
+            + "Follow the prompts on screen to convert your recommendation to a review\n\n"
+            + "Command syntax: done <title of recommendation>";
     public static final String REVIEW_MODE_MESSAGE = "Review will allow you to switch over to review mode. The default"
             + " mode of this application is review mode.\n\nCommand syntax: review";
     public static final String RECO_MODE_MESSAGE = "Reco will allow you to switch over to recommendations mode. The"
@@ -79,6 +83,10 @@ public class Messages {
     public static final String FOLDER_ALREADY_EXISTS = "Data folder already exists";
     public static final String FOLDER_SUCCESS = "Created new data folder";
     public static final String CURRENT_DIRECTORY = "Present project directory is: " + System.getProperty("user.dir");
+
+    // General
+    public static final String DUPLICATE_REVIEW = "There is a review in your list with the same title:";
+    public static final String DUPLICATE_RECOMMENDATION = "There is a recommendation in your list with the same title:";
 
     // Add
     public static final String QUICK_PROMPT = "Do you want to add a quick review? (y/n)";
@@ -94,7 +102,9 @@ public class Messages {
 
     // Sort
     public static final String CURRENT_SORT_METHOD = "Your current sort method is: ";
-    public static final String SORT_METHOD_PROMPT = "Use sort [method] to change sorting method";
+    public static final String AVAILABLE_SORT_METHODS = "Recognised methods are:\n\tTITLE\n\tCATEGORY\n"
+            + "\tRATING\n\tEARLIEST\n\tLATEST\n";
+    public static final String SORT_METHOD_PROMPT = "Use sort <method> to change sorting method";
     public static final String INVALID_SORT_METHOD = " is not valid sorting method, please try again.";
     public static final String SORT_METHOD_SUCCESS = "Success! Your preferred sorting method has been saved: ";
 
@@ -110,7 +120,23 @@ public class Messages {
 
     //Edit
     public static final String MISSING_EDIT_TITLE = "Please specify title of review you would like to edit";
+    public static final String ANYTHING_ELSE = "Would you like to edit anything else? (y/n)";
+    public static final String EDIT_PROMPT_REVIEW = "What would you like to edit (Title / Category / "
+            + "Rating / Description)?";
+    public static final String EDIT_PROMPT_RECO = "What would you like to edit (Title / Category / "
+            + "Price range / Location/ RecBy)?";
+    public static final String EDIT_TITLE_PROMPT = "What would you like to change the title to?";
+    public static final String EDIT_RATING_PROMPT = "What would you like to change the rating to out of 5 stars?";
+    public static final String EDIT_RANGE_PROMPT = "What would you like to change the price range to? "
+            + "(nearest dollar separated by - )";
+    public static final String EDIT_LOCATION_PROMPT = "What would you like to change the location to?";
+    public static final String EDIT_CATEGORY_PROMPT = "What would you like to change the category to?";
+    public static final String EDIT_RECBY_PROMPT = "What would you like to change the recommended by to?";
+    public static final String EDIT_DATE_PROMPT = "Would You like to update the date of entry for "
+            + "the changes made(y/n)?";
 
     //Convert
+    public static final String DETAILS_PROMPT = "Add in details of your experience? (y/n)";
+    public static final String ENTER_DETAILS_PROMPT = "Enter the details of the review: ";
     public static final String CONVERT_SUCCESS = " has been made a review!";
 }

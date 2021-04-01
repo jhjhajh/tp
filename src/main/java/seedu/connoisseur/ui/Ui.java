@@ -24,9 +24,8 @@ public class Ui {
     private static final PrintStream out = System.out;
     private static final int MAX_WHITE_SPACE = 15;
     private static final int MAX_WHITE_SPACE_TITLE = 26;
-    private static final int MAX_WHITE_SPACE_VIEW = 68;
+    private static final int MAX_WHITE_SPACE_VIEW = 67;
     private static final int MAX_WHITE_SPACE_DATE = 23;
-    private static final int MAX_WHITE_SPACE_RATING = 23;
     private final Scanner in;
 
     /**
@@ -77,7 +76,7 @@ public class Ui {
         println("+-------------------------------+----------------+"
                 + "----------------+----------------+----------------+");
         println("|   Title                       | Category       |"
-                + " Price range    | Location       | RecBy          |");
+                + " Price range    | Location       | Recommended By |");
         println("+-------------------------------+----------------+"
                 + "----------------+----------------+----------------+");
     }
@@ -88,31 +87,6 @@ public class Ui {
     public void printTableEndBorderForReco() {
         println("+-------------------------------+----------------+"
                 + "----------------+----------------+----------------+");
-    }
-
-    /**
-     * Prints view command output.
-     *
-     * @param currentReview review to be viewed
-     */
-    public void printView(Review currentReview) {
-        println("+--------------------+---------------------------------------------------------------------+");
-        print("|Title               : " + currentReview.getTitle());
-        printWhiteSpaceView(currentReview.getTitle().length());
-        println("|");
-        print("|Category            : " + currentReview.getCategory());
-        printWhiteSpaceView(currentReview.getCategory().length());
-        println("|");
-        print("|Date & Time of Entry: " + currentReview.getDateTime());
-        printWhiteSpaceView(19);
-        println("|");
-        print("|Rating              : " + currentReview.starRating());
-        printWhiteSpaceView(12);
-        println("|");
-        print("|Description         : " + currentReview.getDescription());
-        printWhiteSpaceView(currentReview.getDescription().length());
-        println("|");
-        println("+--------------------+---------------------------------------------------------------------+");
     }
 
     /**
@@ -161,19 +135,6 @@ public class Ui {
      */
     public void printWhiteSpaceDate(int wordLength) {
         int numOfSpaces = MAX_WHITE_SPACE_DATE - wordLength;
-        while (numOfSpaces > 0) {
-            out.print(" ");
-            numOfSpaces--;
-        }
-    }
-
-    /**
-     * Prints whitespace to align border for date field.
-     *
-     * @param wordLength length of word to subtract
-     */
-    public void printWhiteSpaceRating(int wordLength) {
-        int numOfSpaces = MAX_WHITE_SPACE_RATING - wordLength;
         while (numOfSpaces > 0) {
             out.print(" ");
             numOfSpaces--;
@@ -345,10 +306,10 @@ public class Ui {
     }
 
     public void printEmptyInputMessage() {
-        System.out.println("Please enter an input!");
+        println("This field should not be empty!");
     }
 
     public void printNoUniqueTitleMessage() {
-        System.out.println("Please try again with a unique title!");
+        println("Please try again with a unique title!");
     }
 }

@@ -55,6 +55,9 @@ public class Review {
         return dateAndTimeOfEntry;
     }
 
+    /**
+     * Set a new date of the review.
+     */
     public void setDateAndTimeOfEntry() {
         LocalDateTime dateTime = LocalDateTime.now();
         this.dateAndTimeOfEntry = dateTime.format(DateTimeFormatter.ofPattern("MMM d yyyy h:mm a"));
